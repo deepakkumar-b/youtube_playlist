@@ -22,20 +22,12 @@
  <body class="container" ng-app="firstApp" ng-controller="mainController as main">
 	<!-- form to update the message variable using ng-model -->
 	
-	<div class="form-group">
-		<label>Message</label>
-		<input type="text" class="form-control" ng-model="main.message">
-	</div>
 	<div class="jumbotron">
-
-	 <!-- display the message -->
-	 <h2>This is my message:</h2>
-	 {{ main.message }}
-
-	 </div>
+		<select class="form-control" id="artist" ng-init="selectedArtist = main.artists[0]" ng-model="selectedArtist" ng-options="artist for artist in main.artists" ng-change="changedArtist(selectedArtist)">
+                                              </select>
 	 
+	 </div>
 	 <!-- display the list using ng-repeat -->
-	<h2>This is my list:</h2>
 	 <table class="table table-bordered">
 		 <thead>
 			 <tr>
@@ -56,12 +48,12 @@
 		 </tbody>
 	</table>
 	
-
-    
-  <modal title="{{selectedArtist.title}}" visible="showModal">
-                <iframe width="850" height="600" ng-src="{{getURL(selectedArtist.videoId)}}" frameborder="0" allowfullscreen></iframe>
+	<modal title="Title" visible="showModal">
+                <iframe width="400" height="200" ng-src="{{selectedURL}}" frameborder="0" allowfullscreen></iframe>
         
-  </modal>
+	</modal>
+    
+  
 	
  </body>
 </html>

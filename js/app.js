@@ -11,6 +11,9 @@ firstApp.controller('mainController', function($http, $scope) {
 
  // bind this to vm (view-model)
 var vm = this;
+vm.artists = ['Elton John', 'Stevie Wonder', 'Frank Sinatra', 'Louis Armstrong'];
+
+
 $scope.selectedURL="";
 $scope.showModal = false;
     $scope.toggleModal = function(selectedArtist){
