@@ -7,53 +7,67 @@
 	 <!-- CSS -->
 	 <!-- load bootstrap and our stylesheet -->
 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+	 	 
 	 <style>
 		body { padding-top:50px; }
+		p.test {
+			width: 20em; 
+			word-wrap: break-word;
+		}
+		tr.playlist {
+			text-align: center;
+		}
+		td.playlist_content p{
+			text-align: center;
+		}		
 	 </style>
-
-	 <!-- JS -->
+	 	 	 
+ </head>
+ <body class="container" ng-app="firstApp" ng-controller="mainController as main">
+	<!-- form to update the message variable using ng-model -->
+	<h2>Awesome Artist Playtist </h2>
+	<div class="jumbotron">
+		<p>Select an artist</p>
+		<select class="form-control" id="artist" ng-init="selected = main.artistsList[0]" ng-model="selected" ng-options="artist for artist in main.artistsList" ng-change="selectArtist(selected)">
+        </select>
+	 </div>
+	 <!-- display the list using ng-repeat -->
+	 <table style="width:100%" class="table table-bordered">
+		 <tbody>
+			 <tr class="playlist" ng-repeat="video in main.videoarray track by $index" ng-if="$index % 3 == 0">
+				 <!--<td>{{ main.videoarray[$index].title }}</td>-->
+				 <td valign="middle" align="center" class="playlist_content"><a href=''><img ng-click="toggleModal(main.videoarray[$index])" rel="{{main.videoarray[$index].videoId}}" ng-src="{{main.videoarray[$index].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index])">{{ main.videoarray[$index].title }}</p></a></td>
+				 
+				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+1])" rel="{{main.videoarray[$index+1].videoId}}" ng-src="{{main.videoarray[$index+1].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+1])">{{ main.videoarray[$index+1].title }}</p></a></td>
+				 
+				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+2])" rel="{{main.videoarray[$index+2].videoId}}" ng-src="{{main.videoarray[$index+2].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+2])">{{ main.videoarray[$index+2].title }}</p></a></td>
+				 
+				 <!--<td><a href=''><img ng-click="toggleModal(main.videoarray[$index+3])" rel="{{main.videoarray[$index+3].videoId}}" ng-src="{{main.videoarray[$index+3].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+3])">{{ main.videoarray[$index+3].title }}</p></a></td>
+				 
+				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+4])" rel="{{main.videoarray[$index+4].videoId}}" ng-src="{{main.videoarray[$index+4].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+4])">{{ main.videoarray[$index+4].title }}</p></a></td>-->
+				 <!-- iframe width="360" height="315" ng-src="{{ getVideo(video.videoId) }}" frameborder="0" allowfullscreen-->
+			 </tr>
+		 </tbody>
+	</table>
+	
+	<modal title="{{videotitle}}" visible="showModal">
+                <iframe width="566" height="400" ng-src="{{selectedURL}}" frameborder="0" allowfullscreen></iframe>     
+	</modal>
+    
+	
+	
+    <!-- JS -->
 	 <!-- load angular and our custom application -->
 	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 	 <script src="js/app.js"></script>
-	 	 	 
- </head>
- <body class="container" ng-app="firstApp" ng-controller="mainController as main">
-	<!-- form to update the message variable using ng-model -->
-	
-	<div class="jumbotron">
-		<select class="form-control" id="artist" ng-init="selectedArtist = main.artists[0]" ng-model="selectedArtist" ng-options="artist for artist in main.artists" ng-change="changedArtist(selectedArtist)">
-                                              </select>
-	 
-	 </div>
-	 <!-- display the list using ng-repeat -->
-	 <table class="table table-bordered">
-		 <thead>
-			 <tr>
-				 <td>Name</td>
-				 <td>Color</td>
-				 <td>Nerd Level</td>
-				 <td>Nerd</td>
-			 </tr>
-		 </thead>
-		 <tbody>
-			 <tr ng-repeat="video in main.message">
-				 <td>{{ video.videoId }}</td>
-				 <td>{{ video.title }}</td>
-				 <td>{{ getVideo(video.videoId) }}</td>
-				 <td><a href=''><img ng-click="toggleModal(video)" rel="{{video.videoId}}" src="{{ video.thumbnail.url }}"/></a></td>
-				 <td> <!-- iframe width="360" height="315" ng-src="{{ getVideo(video.videoId) }}" frameborder="0" allowfullscreen--></td>
-			 </tr>
-		 </tbody>
-	</table>
-	
-	<modal title="Title" visible="showModal">
-                <iframe width="400" height="200" ng-src="{{selectedURL}}" frameborder="0" allowfullscreen></iframe>
-        
-	</modal>
-    
-  
 	
  </body>
 </html>

@@ -11,22 +11,31 @@ firstApp.controller('mainController', function($http, $scope) {
 
  // bind this to vm (view-model)
 var vm = this;
-vm.artists = ['Elton John', 'Stevie Wonder', 'Frank Sinatra', 'Louis Armstrong'];
-
+vm.artistsList = ['Elton John', 'Stevie Wonder', 'Frank Sinatra', 'Louis Armstrong', 'Rihanna'];
+vm.selected = vm.artistsList[0];
+vm.videoarray = [];
+getResults(vm.selected);
 
 $scope.selectedURL="";
+$scope.videotitle="";
 $scope.showModal = false;
-    $scope.toggleModal = function(selectedArtist){
+$scope.toggleModal = function(video){
                        $scope.showModal = !$scope.showModal;
-                       $scope.selectedURL = $scope.getVideo(selectedArtist.videoId);
-					   alert($scope.selectedURL);
-        };
-
- getResults('One Direction');
+                       $scope.selectedURL = $scope.getVideo(video.videoId);
+					   $scope.videotitle = video.title;
+					   //alert($scope.selectedURL);
+    };
+ 
+ $scope.selectArtist = function(selectedArtist){
+			vm.selected = selectedArtist;
+			vm.videoarray = getResults(vm.selected);
+			
+	}
  
  function getResults(selectedArtist){
                        $http.get("/"+selectedArtist).success(function(response){
                        vm.message = response;
+					   vm.videoarray = response;
 					   });
         }
 		

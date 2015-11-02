@@ -37,7 +37,7 @@ app.get('/:artist',function(req,res){
                             var resultArray= { };
 							resultArray.videoId = item.id.videoId;
                             resultArray.title = item.snippet.title;
-							resultArray.thumbnail = item.snippet.thumbnails.default;
+							resultArray.thumbnail = item.snippet.thumbnails.medium;
                             results.push(resultArray);
                         }
                        
