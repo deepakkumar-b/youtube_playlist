@@ -1,0 +1,11 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+Limitations/Notes
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Without having much experience using NodeJS, started off with this project and this was exciting and fun to work with. 
+There were few limitations which I faced during this project and which took more time to debug than expected
+
+1) The videos were initially placed in a table cell. Though it was visually pleasing, this approach did not make the page responsive. 
+So had to change the table to div
+
+2) Tried the YouTube Popup player (https://github.com/abhinayrathore/Bootstrap-Youtube-Popup-Player-Plugin) from GitHub source but faced lots of errors and instead of plugin, got the modal code from http://jsfiddle.net/alexsuch/RLQhh/

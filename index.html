@@ -20,43 +20,54 @@
 		}
 		td.playlist_content p{
 			text-align: center;
-		}		
+		}
+		.modal-content {
+			width:800px;
+			background-color: gray;
+		}
+		
 	 </style>
 	 	 	 
  </head>
  <body class="container" ng-app="firstApp" ng-controller="mainController as main">
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">Youtube Artist Playlist</a>
+			</div>
+		
+		</div>
+	</nav>
+	
 	<!-- form to update the message variable using ng-model -->
-	<h2>Awesome Artist Playtist </h2>
 	<div class="jumbotron">
 		<p>Select an artist</p>
 		<select class="form-control" id="artist" ng-init="selected = main.artistsList[0]" ng-model="selected" ng-options="artist for artist in main.artistsList" ng-change="selectArtist(selected)">
         </select>
 	 </div>
 	 <!-- display the list using ng-repeat -->
-	 <table style="width:100%" class="table table-bordered">
-		 <tbody>
-			 <tr class="playlist" ng-repeat="video in main.videoarray track by $index" ng-if="$index % 3 == 0">
-				 <!--<td>{{ main.videoarray[$index].title }}</td>-->
-				 <td valign="middle" align="center" class="playlist_content"><a href=''><img ng-click="toggleModal(main.videoarray[$index])" rel="{{main.videoarray[$index].videoId}}" ng-src="{{main.videoarray[$index].thumbnail.url}}"/>
-				 <p class="test" ng-click="toggleModal(main.videoarray[$index])">{{ main.videoarray[$index].title }}</p></a></td>
-				 
-				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+1])" rel="{{main.videoarray[$index+1].videoId}}" ng-src="{{main.videoarray[$index+1].thumbnail.url}}"/>
-				 <p class="test" ng-click="toggleModal(main.videoarray[$index+1])">{{ main.videoarray[$index+1].title }}</p></a></td>
-				 
-				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+2])" rel="{{main.videoarray[$index+2].videoId}}" ng-src="{{main.videoarray[$index+2].thumbnail.url}}"/>
-				 <p class="test" ng-click="toggleModal(main.videoarray[$index+2])">{{ main.videoarray[$index+2].title }}</p></a></td>
-				 
-				 <!--<td><a href=''><img ng-click="toggleModal(main.videoarray[$index+3])" rel="{{main.videoarray[$index+3].videoId}}" ng-src="{{main.videoarray[$index+3].thumbnail.url}}"/>
-				 <p class="test" ng-click="toggleModal(main.videoarray[$index+3])">{{ main.videoarray[$index+3].title }}</p></a></td>
-				 
-				 <td><a href=''><img ng-click="toggleModal(main.videoarray[$index+4])" rel="{{main.videoarray[$index+4].videoId}}" ng-src="{{main.videoarray[$index+4].thumbnail.url}}"/>
-				 <p class="test" ng-click="toggleModal(main.videoarray[$index+4])">{{ main.videoarray[$index+4].title }}</p></a></td>-->
-				 <!-- iframe width="360" height="315" ng-src="{{ getVideo(video.videoId) }}" frameborder="0" allowfullscreen-->
-			 </tr>
-		 </tbody>
-	</table>
 	
-	<modal title="{{videotitle}}" visible="showModal">
+	<div class=row ng-repeat="video in main.videoarray track by $index" ng-if="$index % 3 == 0">
+            <div class="col-xs-4 letter-box result-tile"
+                <a href=''><img ng-click="toggleModal(main.videoarray[$index])" rel="{{main.videoarray[$index].videoId}}" ng-src=			"{{main.videoarray[$index].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index])">{{ main.videoarray[$index].title }}</p></a>		 
+				 
+            </div>
+			<div class="col-xs-4 letter-box result-tile"
+                <a href=''><img ng-click="toggleModal(main.videoarray[$index+1])" rel="{{main.videoarray[$index+1].videoId}}" ng-src=			"{{main.videoarray[$index+1].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+1])">{{ main.videoarray[$index+1].title }}</p></a>		 
+				 
+            </div>
+			<div class="col-xs-4 letter-box result-tile"
+                <a href=''><img ng-click="toggleModal(main.videoarray[$index+2])" rel="{{main.videoarray[$index+2].videoId}}" ng-src=			"{{main.videoarray[$index+2].thumbnail.url}}"/>
+				 <p class="test" ng-click="toggleModal(main.videoarray[$index+2])">{{ main.videoarray[$index+2].title }}</p></a>		 
+				 
+            </div>
+			
+     </div>
+	
+	<modal title="YouTube" visible="showModal">
                 <iframe width="566" height="400" ng-src="{{selectedURL}}" frameborder="0" allowfullscreen></iframe>     
 	</modal>
     

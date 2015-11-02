@@ -1,0 +1,23 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+Design Decisions
+-----------------------------------------------------------------------------------------------------------------------------------
+
+1) Decided on MEAN Stack approach because of its smooth flow using Javascript for every operation.
+
+Followed the book 
+"MEAN Machine
+
+A beginner's practical guide to the JavaScript stack.
+
+BY Chris Sevilleja AND Holly Lloyd"
+
+and most of my coding style comes from the book.
+
+2) CSS links are placed in the head and scripts are placed on the bottom of the body to load the page faster.
+
+3) Initially settled on to have 5 videos per row and used thumbnails.default but found that the thumbnail was not big enough.
+Present design uses 3 videos per row with medium sized thumbails retrieved from Youtube Search API and the thumbnails are easy to see and perceive.
+
+4) The webpage should be responsive and hence replaced the table that was used intially with div and now the page is responsive.
+
+5) Embedded the videos initially and realised that the page load was slow. Presently replaced the embed with just thumbnail and clicking on the thumbail or the title opens a modal with YouTube Video.

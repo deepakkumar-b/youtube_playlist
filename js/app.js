@@ -13,11 +13,11 @@ firstApp.controller('mainController', function($http, $scope) {
 var vm = this;
 vm.artistsList = ['Elton John', 'Stevie Wonder', 'Frank Sinatra', 'Louis Armstrong', 'Rihanna'];
 vm.selected = vm.artistsList[0];
-vm.videoarray = [];
 getResults(vm.selected);
 
-$scope.selectedURL="";
-$scope.videotitle="";
+$scope.selectedURL= "";
+$scope.videotitle= "";
+
 $scope.showModal = false;
 $scope.toggleModal = function(video){
                        $scope.showModal = !$scope.showModal;
@@ -25,7 +25,8 @@ $scope.toggleModal = function(video){
 					   $scope.videotitle = video.title;
 					   //alert($scope.selectedURL);
     };
- 
+	
+ vm.videoarray = [];
  $scope.selectArtist = function(selectedArtist){
 			vm.selected = selectedArtist;
 			vm.videoarray = getResults(vm.selected);

@@ -5,7 +5,7 @@ var express = require('express'),
 	youtubeClient = null,
 	VALID_ORDER_CRITERIA = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount'], 
 	API_KEY = 'AIzaSyAN7FiXp7dJrN8-0uMGXQhOvE6sWDJBj2g';
-	MAX_LIMIT = 25;
+	MAX_LIMIT = 39;
 	
 var app = express();
 var path = require('path');
